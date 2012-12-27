@@ -1,0 +1,44 @@
+<!-- <start id="html"/> -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang='en' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+  <style>
+    body {
+      background-color: #DBD4C2;
+      width: 1000px;
+      margin: 50px auto;
+    }
+
+    h2 {
+      margin-top: 2em;
+    }
+  </style>
+
+</head>
+
+<body>
+
+<h1>Tweet Archive</h1>
+
+<% TAGS.each do |tag| %>
+  <a href="/?tag=<%= tag %>"><%= tag %></a>
+<% end %>
+
+<% @tweets.each do |tweet| %>
+  <h2><%= tweet['text'] %></h2>
+  <p>
+    <a href="http://twitter.com/<%= tweet['from_user'] %>">
+      <%= tweet['from_user'] %>
+    </a>
+    on <%= tweet['created_at'] %>
+  </p>
+
+  <img src="<%= tweet['profile_image_url'] %>" width="48" />
+<% end %>
+
+</body>
+</html>
+<!-- <end id="html"/> -->
