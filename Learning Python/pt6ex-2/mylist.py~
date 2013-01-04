@@ -1,0 +1,12 @@
+class MyList:
+    def __init__(self, wrapped):
+        self.wrapped = wrapped
+
+    def __add__(self, other):
+        return MyList(self.wrapped + other)
+
+    def __getitem__(self, index):
+        return self.wrapped[index]
+
+    def __iter__(self):
+        return self.wrapped.iter()

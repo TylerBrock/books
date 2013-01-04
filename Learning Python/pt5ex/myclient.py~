@@ -1,0 +1,5 @@
+import sys
+from mymod import test, countChars, countLines
+print test(sys.argv[1])
+import mymod
+print mymod.test(sys.argv[1])

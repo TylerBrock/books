@@ -1,0 +1,2 @@
+import string
+print string

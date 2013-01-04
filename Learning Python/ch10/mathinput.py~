@@ -1,0 +1,5 @@
+while True:
+    reply = raw_input('Enter Text:')
+    if reply == 'stop': break
+    print int(reply) ** 2
+print 'Bye'

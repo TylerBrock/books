@@ -1,0 +1,620 @@
+Chapter 3:
+Python files need .py extension to be imported
+Add #!/usr/bin/env python to scripts to enable portable execution
+Add input('Press enter to exit') to keep console open in Windows
+    Use raw_input() in 2.6 to avoid evaluating the input
+    Use eval(input()) to get the 2.6 input() effect in version 3.0
+In Windows, files with .pyw extension will not show a console window
+After the initial import of a module, subsequent imports do nothing
+Same session reload in 3.0
+     from imp import reload
+     relaod(script)
+You can only reload modules that have been imported already
+dir(imported_module_name) returns all module attributes
+Names with leading and trailing double underscores are built-in names
+Each module is its own namespace and can similar names to other modules
+The from statement is used to collapse namespaces
+Reloading a file is not transitive and may require additional work
+
+Chapter 4:
+Strings are a sequence (positionally ordered collection of objects)
+Important modules math & random
+Other sequences: Lists & Tuples
+Python variables are created when they are assigned values
+A negative index is added to a string's size
+Strings are immutable in Python
+	Every string operation produces a new string
+Adding sequences concatenates them
+Multiplying sequences repeats them
+Numbers, strings and tuples are immutable
+	 Lists and Dictionaries are not
+Operations specific to strings are methods
+Methods: find, replace, split, isX, rstrip
+Formatting:
+	'%s, eggs, and %s' % ('spam', 'SPAM!')
+	'{0}, eggs, and {1}'.format('spam', 'SPAM!')
+dir(object) tells you what the methods are
+help(method) tells you what the methods do
+ord('char') shows the ascii value
+Regular expressions are handled by the re module
+Putting expressions in brackets makes a list comprehension
+Putting expressions in parenthesis makes a generator
+Calling next() on a generator will get the next object
+Map generates the results of running items through a function
+Garbage collection happens when the last reference is removed
+Dictionary keys don't maintain any dependable order
+Tuples can be used to provide integrity constraint
+Passing an object to type() can be used to determine class
+
+Chapter 5:
+Math on mixed number types upconverts operands
+In Python 2.6 "/" performs integer division
+Floor division "//" always truncates regardless of types
+Built in functions are in the __builtin__ module
+The Decimal type is well suited to representing fixed-precision quantities
+    Perfect for sums of money
+Items can appear only once in a set
+| calculates a union and ^ calculates XOR on sets
+Set expressions require like kinds but methods take any iterable
+Great set information on pages 138/139 (relational db similarity)
+
+Chapter 6:
+The notion of type lives with objects and not names
+Variables are generic in nature and simply refer to an object
+Mutable core types can change in place (beware references)
+Use copy module copy.copy() and .deepcopy() to duplicate objects
+To test for same value use '=='
+To test for same object use 'is'
+Small integer and string objects are cached by Python
+
+Chapter 7:
+Strings are immutable sequences (cannot be changed in place)
+Raw strings can be used to ignore escape characters
+Adjacent string literals are concatenated automatically
+You cannot end a raw string with a single backslash
+Negative offsets are added to the length of the string
+You can reverse a sequence by specifying a negative slice stride
+    sequence[::-1]
+With negative strides, upper and lower bounds are reversed
+    sequence[5:1:-1] fetches items 2 to 5 in reverse order
+Slicing is equivalent to indexing with a slice
+'chr()' performs the inverse of 'ord()'
+Page 171 shows you how to convert from binary to integer
+The string's join method can be used to implode a list
+Join is called throught the desired delimiter
+Split is the opposite of join
+* in formats allows delayed width specification
+The vars() builtin function displays all variables
+
+Chapter 8:
+Lists are mutable objects and sequences
+Lists are also arrays of object references (pointers)
+Slice assignment first deletes then inserts
+      # of items deleted does not have to match # inserted
+Appending to lists is faster than concatenation
+Key argument can be applied to customize sorts
+Use methods when in-place changes are required
+Use built-in functions when new objects are required
+The del function can be used to delete objects
+Dictionaries are implemented as hash tables
+Dictionaries store references and not copies
+All collection data types can nest arbitrarily
+Dictionaries support popping by key vs. by position
+Any immutable object can be used as a dict key
+Tuples can be used to make compound key values
+Class instance objects can be used as keys
+Dictionaries can be used as lists for sparse data
+Dictionary views dynamically reflect changes
+
+Chapter 9:
+Immutability only applies to the top level of tuples 
+Constantness is associated with objects, not variables
+The best way to read a file is to not read it at all
+readline() returns an empty string to signify EOF
+Pickle must be used in binary mode to store objects
+Shelve can be used to store objects by key
+Use the struct module to compose and process binary data
+Dictionaries and sets support the copy() method
+The copy module's deepcopy method can handle nesting
+Python automatically traverses data to perform comparisons
+       Recursively from left to right
+       First difference determines comparison result
+'==' tests for equivalence, 'is' tests for identity
+Why can't dictionaries be compared in 3.0:
+    sorted(d.items()) < sorted(d2.items())
+All objects are inherently true or false
+Bool() can be used to test the Boolean values of objects
+Python Type Hierarchy on Page 249 is excellent visual
+Repeating a sequence adds itself a number of times
+Keep a list or dict of visited items to avoid cycles
+
+Chapter 10:
+Python doesn't require braces, semi-colons or parentheses
+End of indentation is end the end of a block
+Special case for one line body of a compound statement
+Errors can be handled by testing inputs or try statements
+       try, except, else
+If statements can be composed of if, elif, and else
+Statements span multiple lines with bracketed syntactic pairs
+
+Chapter 11:
+Temporary tuples are created to save right side of assignment
+Sequence assignments must have same length on both sides
+Sequence unpacking assignment always returns a list
+If there is nothing to match when unpacking, empty list
+Sequence unpacking in 3.0, useful for first, rest pattern
+Augmented assignment reduces typing, runs faster, optimal
+Augmented assignments use in place changes on mutable objects
+	  Be aware of this with lists and dictionaries
+	  Make copies in order to break reference structure
+Names starting with "_" will not be imported by import *
+Names that have leading and trailing "__" are special
+Name "_" retains the result of last interactive expression
+Class names commonly start with an uppercase letter
+Module names commonly start with a lowercase letter
+Self, is not reserved, but plays special class role
+Names have no type, but objects do have a type
+In place changes via methods return None (be careful)
+Sys module has stdout stream you can write to (print)
+Sep, end, and file keyword arguments for print method
+Sys.stdout can be reassigned to other files (like logs)
+There is a 2to3 converstion script to update scripts
+
+Chapter 12:
+If tests are associated via indentation
+Multiway branching can be acheived via dictionary 'switch'
+Functions can be embedded into dictionaries via lambdas
+Comparisons are applied recursively to data structures
+"and" & "or" operators always return an object
+Magnitude comparisons return True or False
+Ternary Expression: A = X if Y else Z
+	C equiv: Y ? X : Z
+Or returns left operand if true else right (T or F)
+And returns left operand if false else right (T or F)
+__bool__ is named __nonzero__ in Python 2.6
+
+Chapter 13:
+While statements execute else if not exited via break
+Simulate "do while" loop with True test and ending break
+"break" jumps out of closest enclosing loop
+"continue" jumps to the top of the closest enclosing loop
+"pass" does nothing, it is an empty statement
+"pass" is to statements what "None" is to objects
+       They are both an explicit nothing
+The loop else clause is run if the body is never executed
+Loop else can be used to indicate explicit search failure
+For loop header begins with assignment targets
+For loop header also includes object you want to step through
+Variable used as assignment target retains last loop value
+Slicing returns a type specific result; stars return lists
+"for line in open('file.txt'):" is the best way to read files
+     This method uses the file's iterator (memory efficient)
+For loop is the best tool for stepping through sequence
+Use range() to change lists in place with a loop
+Use zip to traverse multiple sequences in parallel
+Zip produces as many tuples as are in the shortest sequence
+Enumerate can be used to generate (index, value) tupels
+Generators have a __next__ method called by next built-in
+Avoid the temptation to count things like in C code
+
+Chapter 14:
+Iteration protocal raises StopIteration at end of results
+Line strings already have a \n when read through iterator
+File objects are their own iterators
+Lists and other built-ins support multiple open iterators
+Performing ops on items in sequence-> list comprehension
+String methods return a new string (allows for chaining)
+Series of for clauses in list comprehenions can nest
+       [x + y for x in 'abc' for y in 'lmn']
+Maps more limited than comprehensions: expr > functions
+sorted() sorts items in an iterable
+zip() combines items from iterables
+enumerate() pairs items in an iterable with positions
+filter() selects items for which a function is true
+reduce() runs pairs of items through a function
+reduce() and operator must be imported to be used
+"any" and "all" built-ins return iterable's truth values
+"sum" call computersthe sum of all the numbers
+"max" and "min" computer largest/smallest integer
+list() and tuple() build objects from iterables
+Generator functions can be made with yield statements
+List comprehensions can be come generator expressions
+     Code a list comprehension in parenthesis
+__iter__ and __getitem__ make iterables
+For loops use the iteration protocol on items
+List comps collect results of applied expressions
+Iteration contexts: for, map, sorted, sum, any, all,
+	  list, tuple, string join, seq assignments
+
+Chapter 15:
+Dir() function can be used to display object attributes
+Docstrings are stored in the __doc__ attribute
+Docstrings should be placed before any code
+Help() function formats docstrings like a man page
+PyDoc GUI can be run with "pydoc.py -g"
+Library reference is the Python bible
+Official website (http://www.python.org)
+Don't embed assignment statemnts in loop tests
+      Would be more like C programming
+
+Chapter 16:
+Functions maximize code re-use and minimize redundancy
+A function definition is executable code
+Calling def creates a function object and assigns name
+Lambda creates on object and returns it as a result
+Return sends a result object back to the caller
+Yield sends a result object back and remembers state
+Global declares module level variables
+Nonlocal declares enclosing function variables
+Arguments are passed by assignment
+Arguments, return variables, and variables not declared
+Functions can be applied to a variety of object types
+	  Must sport compatible interface
+Functions without return statement produce None object
+Meaning of operation depends on objects operated on
+Objects supporting expected interface can be processed
+
+Chapter 17:
+Python has lexical scoping - determined by var location
+Functions define a local scope, modules global scope
+Enclosing modules are considered to be local scope
+Global scope spans a single file only
+Each call to a function creates a new local scope
+Assigned names are local unless global or nonlocal
+Interactive code in built-in module __main__
+Def assignments will become local to that function
+L = X will classify L as local, L.append(X) does not
+LEGB rule: Local, Enclosing, Global, Built-in
+Built-in scope is just a built-in module called builtins
+Assignment with global can create nonexistant global
+Use accessor methods to avoid strong file coupling
+Assignment to nonlocal changes closest enclosing func
+Function objects remember values in enclosing scopes
+Classes are better with "memory" -> explicit state
+Lambdas are expressions and used within dict and list
+Defaults evaluated when nested functions are created
+	 Not when they are later called
+Flat is better than nested! (Less enclosing scopes)
+Nonlocal names must exist in enclosing function scope
+Remember: review non-local here P. 425 (for 3.0)
+Move state to global scope in 2.6 to store it
+Use classes with attributes to store state in 2.6
+Self argument automatically receives call subject
+"__call__" intercepts direct calls on an instance
+	   No need for named methods
+
+Chapter 18:
+Objects passed by assigning to local variable names
+Immutable arguments are effectively passed "by value"
+Mutable arguments are effectively passed "by pointer"
+Simulate output parameters by returning an object
+"*" in a function call unpacks discrete arguments
+"*" in function argument collects arguments
+"*" unpacks/colects sequence while "**" does dict
+Ordering must be: positional, keyword, seq, dict
+Keyword only arguments(3.0) appear after *args
+Best practice to assume arguments will work
+Python will raise errors when arguments are bad
+
+Chapter 19:
+Cohesion: Decomposing tasks to purposeful functions
+Coupling: How functions should communicate
+Use areguments for inputs and return for outputs
+Use global variables only when truly necessary
+Don't change mutable arguments unless expected
+Each function should have a single purpose
+Recursion creates local scope copies on stack
+Non-linear iterations require recursion vs. loops
+Recursion is useful in handling arbitrary structs
+Func annotations stored in __annotations__ dict
+Lambda expressions generate function objects
+Lambdas are expressions and not statements
+Lambda form: lambda arg1, arg2: expression
+Lambda body is a single expression, not block
+Defaults work on lambda arguments as expected
+Lambda body code follows def scope rules
+Callback handlers are frequenty inline lambdas
+Lambdas provide code proximity for singular use
+Lambdas can be used to defer execution
+Map applies functions to iterms in an interable
+Map can work on multiple sequences / arguments
+Map can be faster than list comprehensions
+    Mostly when mapping built in functions
+Reduce lives in the functools module (3.0)
+Reduce maps funcs to seq, produces one result
+Operator module provides expression functions
+
+Chapter 20:
+List comprehensions apply expressions to seq
+Expression tools more general than func tools
+List comprehensions work well with matrixes
+Nest comprehensions in order to build matrixes
+Generator functions use yield instead of return
+	  Suspend and resume state btw calls
+Generator expressions return result objects
+	  Produces results on demand
+Generators implement interation protocol free
+	   Can be used in iteration contexts
+Object iterator is fected with iter function
+Iteration can fall back on sequence indexing
+Send method can communicate with generators
+Parentheses make generator expressions
+Review iteration tool complexity (map, zip)
+Timing can be done with the time module
+Maping is fast with built-in but not lambda
+List comprehensions fastest for expressions
+Time.time > time.clock on unix platforms
+Timeit module automates code timing
+Profile can be used as source code profiler
+Fucntion body assignments make names local
+Python detects locals statically
+Default args saved when def run not called
+Mutable default arguements retain state
+Attribute fetching increases runtime
+
+Chapter 21:
+Importing loads and runs modules
+Imports are not like #include, they:
+	Find the modules's file
+	Compile it to bytecode
+	Run module's code to build objects
+You can ship bytecode directly w/our source
+Usually no bytecode for top level files
+	Used internally and discarded
+Python path is located in sys.path
+".pth" files can be used to add paths
+Import functions can be redefined w/ hooks
+"-O" command line flag optimizes byte code
+     Psyco provides better optimization
+Eggs system provides dependency checking
+Third-party extensions use distutils
+	    come with setup.py script
+
+Chapter 22:
+Module files follow variable name rules
+Extension modules can add flexibility
+	  Accessed with import statements
+Import fetches modules as a whole
+From fetches specific names out of a module
+* copies module names to importing scope
+There is one import per file, per process
+def, import, from are executable statements
+del module can delete modules after import
+From can potentially corrupt name spaces
+From * collapses one namespace into another
+Module namespaces can be viewed with dir()
+       Also with the __dict__ attribute
+Module namespaces are stored as dict objects
+Module global scope is always enclosing file
+       Not the module it was called from
+Imported file doesn't have upward visibility
+Python has what is known as lexical scoping:
+       Scope determined by physical location
+Reload forces code a reload / rerun
+Reload only works for python modules
+From statement can obscure variable meaning
+
+Chapter 23:
+A package is a directory of Python code
+Package imports use "dotted" paths
+Directories in packages need __init__.py
+__init__.py generates dir module namespace
+__init__.py run automatically on access
+__all__ lists define submodule exports
+"import x as y" can shorten full paths
+Use . (3.0) to force relative imports
+Relative imports apply to from only
+
+Chapter 24:
+Prefix names with "_" prevents * copying
+__all__ variable specifies names to copy
+Python looks for __all__ list first
+__future__ contains non-default features
+__name__ == main when run as top-level file
+__name__ == module when imported by clients
+__name__ variable is basic usage mode flag
+unittest & doctest provide more test tools
+__name__ == main test used for selftesting
+sys.argv contains command-line arguments
+	 First item is name of script
+Advanced args processing: getopt, optparse
+Getattr() can be used to fetch attributes
+Use exec() to load modules dynamically
+Byte-code compiler is available at runtime
+Module reloads do not reload transitively
+       Subcomponents updated independently
+reloadall.py code on P.596 useful
+You are always in a module in Python
+Minimize module coupling: global variables
+Maximize module cohesion: unified purpose
+Modules shouldn't change other module vars
+
+Chapter 25:
+Each class object has it's own namespace
+Attribute search goes bottom up left-right
+Objects lower in a tree inherit attributes
+Objects in tree are parent attribute union
+Classes and instances are disctict types
+Classes are instance factories
+Higher classes in tree are superclasses
+Lower classes in the tree are subclasses
+Modules have only one instance in memory
+Instances are class function's first arg
+More superclasses: multiple inheritance
+Defs inside classes are known as methods
+__init__ automatically run on new instances
+__init__ method is known as the constructor
+Polymorphism: meaning of operation depends
+	on the objects being operated on
+
+Chapter 26:
+Classes generate multiple instance objects
+Class statement creates class object
+Class statement assigns class object a name
+Assignments inside classes make attributes
+Class attributes provide state / behavior
+Calling classes as function creates instance
+Each instance object inherits class attrs
+Each instance object gets its own namespace
+Assignments to self make per-instance attrs
+Methods define behavior class exports
+Inheritance looks up names in linked objects
+Superclasses are listed in class header ()
+Class that inherits is called a subclass
+Class that is inherited from is superclass
+Instances inherit attrs from all superclasses
+Class names should begin with uppercase
+Modules do not have operator overloading
+Method names with __X__ are special hooks
+No defaults for operator overloading methods
+Operators allow integration with object model
+__init__ run when new instance obj is created
+__add__ run when instance appears in + expr
+__str__ run when object is printed
+Operator overloading useful built-in like obj
+
+Chapter 27:
+Module names should start with lowercase
+Class names should start with uppercase
+Modules should have a single cohesive purpose
+Classes > enclosing scope ref for saving data
+Args after first default must have defaults
+Encapsulation wraps logic behind interfaces
+__getattr__ overloading delegates getattr
+Delegation wraps and propegates calls
+__dict__ holds object attributes
+Internal class methods use "_" name prefix
+"__" method prefix: pseudoprivate class attrs
+Pickle serializes objects to and from bytes
+dmb(named anydbm in 2.6): access by key
+Shelve uses Pickle and dbm to store objects
+Shelve keys must be strings
+Shelve keys should be unique
+Pickle records instance attributes
+Pickle files must be closed to save changes
+ZODB is an object oriented database system
+SQLObject and SQLAlchemy are great ORMs
+
+Chapter 28:
+Inheritance searches attribute references
+Inheritance doesn't search attr assignment
+Static methods don't expect self first arg
+Class methods receive a class when called
+Abstract super expects behavior in sub class
+Raise errors / asserts to enforces sub reqs
+Scopes are determined by assignment position
+Scopes never influences by imports
+Namespaces are exposed by __dict__ attribute
+Instances __class__ links to their class
+Classes __bases__ links to superclasses
+Dir() collects inherited attributes
+Namespaces are just dictionaries in Python
+Use docstrings for functional documentation
+Use hashes for micro-level documentation
+Help displays docstings in a formatted way
+Modules:
+	Data / Logic Packages
+	Created by writing Python files
+	Are used by being imported
+Classes:
+	Implement new objects
+	Are created by class statements
+	Are used by being called
+	Always live within a module
+	Support operator overloading
+	Support multiple instance generation
+	Support inheritance
+
+Chapter 29:
+Operator overloading lets classes intercept ops
+Class can overload all Python expression ops
+Classes can overload built-in ops (ex: print)
+Overloading makes classes like built-in types
+Operator overloading methods can be inherited
+__getitem__ is called for indexing operations
+Slice bounds are bundled in slice objects
+      Passed to indexing implementation
+You can pass slice manually: L[slice(2, 4)]
+Objects that respond to indexing also iterate
+Iteration contexts try the __iter__ method 1st
+Exceptions can be raised by using "raise exp"
+Raise StopIteration to end iteration
+Define iterator classes for multiple iterators
+Membshp: __contains__ > __iter__ > __getitem__
+__getattr__ get qualifying undefined attr
+Raise AttributeError when doesn't exist
+Be sure that __setattr__ uses __dict__[attr]
+__getattribute__ gets all attributes + undef
+__repr__ should return an as-code string
+for print, __str__ called before __repr__
+__bool__ uses __len__ as a fallback
+In 2.6 use __nonzero__ instead of __bool__
+__del__ destructor called at garbage collec
+__repr__ is used in nested object appearances
+
+Chapter 30:
+Encapsulation allows implementation to change
+Write methods to expect object interface
+Composition embeds objects into a container obj
+Composition is a "has-a" relationship
+Inheritance creates an "is-a" relationship
+Composition + inheritance: complementary tools
+Design: Nouns are classes, verbs are methods
+Pickle and Shelve save state and behavior
+Delegation: controllers that embed objects
+In delegation, embedded objects are passed requests
+__getattr__ intercepts access to non-existent members
+Wrapper/Proxy classes can rout access to wrapped object
+Wrappers retain the interface of a wrapped object
+Wrappers may add additional operations of their own
+getattr(X,N) like X.N but not like X.__dict__[N]
+X.__dict__[N] will not perform inheritance search
+Internal names usually begin with a single underscore
+The single underscore has no meaning to python itself
+Names inside a class that start with two underscores
+	automatically expand to include the name of the enclosing class
+Pseudoprivate names prevent subclasses from redefining internal names
+Unbound methods are functions in Python 3.0
+Classic classes attribute search is depth first
+New-style classes attribute search is breadth first
+Either style class searches left to right
+Objects obtain the union of behaviors from all superclasses
+Built-in function id returns any object's address
+Factory design pattern allows for objects created during runtime
+	Specific to conditions which cannot be determined when written
+
+Chapter 31:
+Built-in types can be extended by embedding them in wrapper classes
+	See setwrapper.py
+Types can also be extended by subclassing in a class declaration
+More efficient to implement a set with a dictionary in Python
+	Replaces linear scans with dictionary indexing (hashing)
+In new style classes: type derives from object, object derives from type
+	Circular relationship that caps the object model
+New style classes use diamond inheritance (left to right first)
+To force selection, you can always name desired attributes at mix point
+Sequences of string attribute names can be assigned to __slots__
+Assignment to __slots__ limits the set of legal attributes of a class
+When slots are used, the __dict__ namespace is not unless added as a slot
+getattr lets you use __dict__ and __slots__ as a single set of attributes
+Instances inherit the lowest __slots__
+dir() includes all __slots__ names (even from superclasses)
+Properties allow new-style classes to define automatically called methods
+__getattribute__ works for new-style classes only
+__getattribute__ intercepts all attribute references, not just undefined
+Attribute descriptors like __get__ & __set__ intercept read/write access
+Metaclasses subclass the type object and intercept class creation calls
+Static methods in 2.6 create an unbound method that requires an instance
+Static methods in 3.0 create a simple function that requires no instance
+In 2.6 methods must be declared static to be called with no instance
+In 3.0 methods need not be declared as static if called through a class
+"staticmethod" and "classmethod" reassign method names inside a class
+Static methods localizes the function name in the class scope
+Static methods also moves the function code closer to where it is used
+Static methods allow subclasses to customize the method via inheritance
+Static methods and explicit class names are better for local class data
+Class methods are better for processing differing class hierarchy data
+Function decorators are coded on the lines above a def statement
+Function decorators consist of an "@" symbol followed by a metafunction
+Decorators allow you to insert a layer of logic to be run on every call
+Decorator: Any method that take function as argument, returns callable

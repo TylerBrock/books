@@ -1,0 +1,7 @@
+"Module level documentation"
+
+papaya = 10
+
+def square(x):
+    "Function that squares things"
+    return x ** 2
