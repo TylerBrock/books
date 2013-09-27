@@ -61,7 +61,7 @@ int main()
             }
         }
 
-        if (wait_time <= 0 && line.isempty())
+        if (wait_time <= 0 && !line.isempty())
         {
             line.dequeue(temp);         // attend next customer
             wait_time = temp.ptime();   // for wait_time minutes
