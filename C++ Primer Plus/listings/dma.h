@@ -21,7 +21,7 @@ class baseDMA
 };
 
 // derived class without DMA
-// no destrucor needed
+// no destructor needed
 // uses implicit copy constructor
 // uses implicit assignment operator
 class lacksDMA : public baseDMA
@@ -33,9 +33,9 @@ class lacksDMA : public baseDMA
     public:
         lacksDMA(const char * c = "blank", const char * l = "null",
                 int r = 0);
-        lacksDMS(const char * c, const baseDMA & rs);
+        lacksDMA(const char * c, const baseDMA & rs);
         friend std::ostream & operator<<(std::ostream & os,
-                const lacksDMS & rs);
+                const lacksDMA & rs);
 };
 
 // derived class with DMA

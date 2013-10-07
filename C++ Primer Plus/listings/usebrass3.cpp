@@ -1,4 +1,4 @@
-// usebrass1.cpp -- testing bank account classes
+// usebrass1.cpp -- polymorphic example using an abstract base class
 // compile with brass.cpp
 #include <iostream>
 #include <string>
