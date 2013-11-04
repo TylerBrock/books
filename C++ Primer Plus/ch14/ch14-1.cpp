@@ -1,8 +1,8 @@
-// pe14-1.cpp -- using Wune class with containment
+// pe14-1.cpp -- using Wine class with containment
 #include <iostream>
-#include "winec.h"
+#include "winec1.h"
 
-int main( void )
+int main()
 {
     using std::cin;
     using std::cout;

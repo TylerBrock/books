@@ -1,19 +1,19 @@
 // winec.cpp -- implementation of the Wine class
-#include <iostream>
 #include "winec.h"
+#include "pair.h"
 
 Wine::Wine(const char * l, int y, const int yr[], const int bot[]) : name(l), years(y)
 {
     ArrayInt vintage_years(yr, y);
     ArrayInt vintage_bottles(bot, y);
-    p = std::make_pair(vintage_years, vintage_bottles);
+    p = PairArray(vintage_years, vintage_bottles);
 }
 
 Wine::Wine(const char * l, int y) : name(l), years(y)
 {
     ArrayInt vintage_years(y);
     ArrayInt vintage_bottles(y);
-    p = std::make_pair(vintage_years, vintage_bottles);
+    p = PairArray(vintage_years, vintage_bottles);
 }
 
 void Wine::GetBottles()
@@ -21,9 +21,9 @@ void Wine::GetBottles()
     for(int i = 0; i < years; i++)
     {
         std::cout << "Please enter a vintage year:";
-        std::cin >> p.first[i];
+        std::cin >> (p.first()[i]);
         std::cout << "Please enter the number of bottles:";
-        std::cin >> p.second[i];
+        std::cin >> (p.second()[i]);
     }
 }
 
@@ -31,7 +31,7 @@ void Wine::Show() const
 {
     std::cout << "Wine: " << name << std::endl;
     for (int i = 0; i < years; i++)
-        std::cout << "Year " << p.first[i] << ": " << p.second[i] << std::endl;
+        std::cout << "Year " << p.first()[i] << ": " << p.second()[i] << std::endl;
 }
 
 std::string & Wine::Label()
@@ -41,5 +41,5 @@ std::string & Wine::Label()
 
 int Wine::sum() const
 {
-    return p.second.sum();
+    return p.second().sum();
 }

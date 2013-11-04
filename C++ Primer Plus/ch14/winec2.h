@@ -1,6 +1,6 @@
-// winec.h -- headers for the wine class
-#ifndef WINEC_H_
-#define WINEC_H_
+// winec2.h -- headers for the wine class
+#ifndef WINEC2_H_
+#define WINEC2_H_
 #include <string>
 #include <iostream>
 #include <valarray>
@@ -9,13 +9,10 @@
 typedef std::valarray<int> ArrayInt;
 typedef Pair<ArrayInt, ArrayInt> PairArray;
 
-class Wine
+class Wine : private std::string, private PairArray
 {
     private:
-        std::string name;
         int years;
-        // first member holds vintage years, second holds num bottles
-        PairArray p;
 
     public:
         // initialize label to l, number of years to y,
@@ -38,4 +35,5 @@ class Wine
         // Total number of bottles in the second item of PairArray
         int sum() const;
 };
+
 #endif
