@@ -1,37 +1,35 @@
-// studentc.h -- defining a Student class using containment
-#ifndef STUDENTC_H_
-#define STUDENTC_H_
+// studenti.h -- defining a Student class using private inheritance
+#ifndef STUDENTI_H_
+#define STUDENTI_H_
 
 #include <iostream>
 #include <string>
 #include <valarray>
 
-class Student
+class Student : private std::string, private std::valarray<double>
 {
     private:
         typedef std::valarray<double> ArrayDb;
-        std::string name;       // contained object
-        ArrayDb scores;         // contained object
 
         // private method for scores output
         std::ostream & arr_out(std::ostream & os) const;
 
     public:
-        Student() : name("Null Student"), scores() {}
+        Student() : std::string("Null Student"), ArrayDb() {}
         explicit Student(const std::string & s)
-            : name(s), scores() {}
-        explicit Student(int n) : name("Nully"), scores(n) {}
+            : std::string(s), ArrayDb() {}
+        explicit Student(int n) : std::string("Nully"), ArrayDb(n) {}
         Student(const std::string & s, int n)
-            : name(s), scores(n) {}
+            : std::string(s), ArrayDb(n) {}
         Student(const std::string & s, const ArrayDb & a)
-            : name(s), scores(a) {}
+            : std::string(s), ArrayDb(a) {}
         Student(const char * str, const double * pd, int n)
-            : name(str), scores(pd, n) {}
+            : std::string(str), ArrayDb(pd, n) {}
         ~Student() {}
         double Average() const;
-        const std::string & Name() const;
         double & operator[](int i);
         double operator[](int i) const;
+        const std::string & Name() const;
 
         // friends
         // input
